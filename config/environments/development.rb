@@ -6,6 +6,17 @@ Rails.application.configure do
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 
+  # Set up config for running the app on Morph
+  if ENV["AGENT_RAILS_HOST"]
+    routes.default_url_options = { host: ENV["AGENT_RAILS_HOST"] }
+    config.action_mailer.default_url_options = { host: ENV["AGENT_RAILS_HOST"] }
+    config.action_mailer.asset_host = "http://#{ENV['AGENT_RAILS_HOST']}"
+    config.hosts << ENV["AGENT_RAILS_HOST"]
+    config.action_dispatch.default_headers["X-Frame-Options"] = "ALLOWALL"
+    config.action_dispatch.cookies_same_site_protection = :none
+    config.action_cable.allowed_request_origins = ["https://#{ENV['AGENT_RAILS_HOST']}"]
+  end
+
   # Do not eager load code on boot.
   config.eager_load = false
 
