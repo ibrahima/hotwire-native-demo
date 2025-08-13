@@ -44,3 +44,39 @@ a:focus-visible {
   outline: 2px solid var(--color-on-body);
   outline-offset: 1px;
 }
+
+/* Hero video styles */
+.hero-video-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+/* Hide video on native apps to avoid performance issues */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
+}
+
+.hide\@native .hero-video-container {
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-video-container {
+    height: 150px;
+    margin-bottom: 1rem;
+  }
+}

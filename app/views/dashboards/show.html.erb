@@ -1,5 +1,13 @@
 <% content_for :title, "Navigation" %>
 
+<div class="hero-video-container">
+  <video autoplay loop muted playsinline class="hero-video">
+    <source src="<%= asset_path('videos/demo-background.mp4') %>" type="video/mp4">
+    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
 <div class="top-level-container">
   <h1 class="hide@native margin-bs-xl text-large-title">Navigation</h1>
   <p>This demo app will help you get acquainted with Hotwire Native.</p>
